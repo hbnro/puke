@@ -5,9 +5,18 @@ namespace Puke;
 class Base
 {
 
-  public static function parse(\Closure $lambda)
+  public static function parse($test)
   {
-    $src = \Puke\Helpers::source($lambda);
+    if ($test instanceof \Closure) {
+      $src = \Puke\Helpers::source($test);
+    } else {
+      $src = (string) $test;
+
+      if (@eval("function(){\n$test\n};") === FALSE) {
+        throw new \Exception("Syntax error on `$test`");
+      }
+    }
+
     $src = static::compile($src);
 
     return $src;
