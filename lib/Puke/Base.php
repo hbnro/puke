@@ -25,7 +25,7 @@ class Base
   public static function render(\Closure $lambda, array $locals)
   {
     $src = static::parse($lambda);
-    $out = eval($src);
+    $out = @eval($src);
 
     return $out($locals);
   }
