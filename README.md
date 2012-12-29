@@ -54,6 +54,9 @@ Display your favorite books.
     # or using a clean render() helper...
     echo Puke\Base::render($view, ['books' => $data]);
 
+    # now try this
+    p('funny');
+
 Note that a simple echo will not work as normally, use the `text()` helper inside
 the template to achieve the same result.
 
