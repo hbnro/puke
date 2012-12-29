@@ -12,7 +12,7 @@ class Base
     } else {
       $src = (string) $test;
 
-      if (@eval("function(){\n$test\n};") === FALSE) {
+      if (@eval("function(){$test};") === FALSE) {
         throw new \Exception("Syntax error on `$test`");
       }
     }
